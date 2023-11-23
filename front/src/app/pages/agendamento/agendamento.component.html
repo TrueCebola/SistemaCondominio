@@ -1,0 +1,36 @@
+<head>
+    <title>{{'Autorização'}}</title>
+</head>
+
+
+<po-modal #modal [p-title]="title + ' Autorização'">
+    <form [formGroup]="form">
+        <po-combo formControlName="id_pessoa_autoriza" [p-options]="pessoas" p-label="Autorizador"
+            name="id_pessoa_autoriza" [p-show-required]="true" [p-required]="true"></po-combo>
+        <po-combo formControlName="id_pessoa_entrada" [p-options]="pessoas" p-label="Pessoa" name="id_pessoa_entrada"
+            [p-show-required]="true" [p-required]="true"></po-combo>
+        <po-combo formControlName="id_veiculo" [p-options]="veiculos" p-label="Veículo" name="id_veiculo"
+            [p-show-required]="true" [p-required]="true"></po-combo>
+        <po-combo formControlName="id_portaria" [p-options]="portarias" p-label="Portaria" name="id_portaria"
+            [p-show-required]="true" [p-required]="true"></po-combo>
+        <po-datepicker formControlName="hora_data" p-label="Data" name="hora_data" p-required="true"></po-datepicker>
+        <po-textarea formControlName="observacao" p-label="Observação" name="observacao"
+            [p-optional]="true"></po-textarea>
+    </form>
+
+    <po-modal-footer [p-disabled-align]="false">
+        <po-button p-danger="true" p-label="Cancelar" (p-click)="fecharModal('autorizacao')"></po-button>
+        <po-button [p-disabled]="!form.valid" p-kind="primary" [p-label]="title==='Cadastrar'?'Cadastrar':'Atualizar'"
+            [p-loading]="loading" (p-click)="this.id?salvar(this.id):salvar()"></po-button>
+    </po-modal-footer>
+</po-modal>
+
+<po-page-list [p-actions]="actions" p-title="Autorizações">
+    <po-table [p-columns]="columns" (p-delete-items)="apagar(id_linha)" [p-height]="700" [p-infinite-scroll]="false"
+        [p-items]="items" [p-loading]="loading" [p-selectable]="true" [p-selectable-entire-line]="false"
+        (p-selected)="selecionado($event.id)" [p-single-select]="true" [p-sort]="true" [p-striped]="true">
+        <ng-template p-table-cell-template let-column="column" let-row="row">
+            <span class="po-clickable po-icon po-icon-edit" style="font-size: 20px;" (click)="editar(row.id)"></span>
+        </ng-template>
+    </po-table>
+</po-page-list>
