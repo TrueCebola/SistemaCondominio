@@ -22,4 +22,18 @@ export class MovimentacaoService {
     let url = `${this.apiUrl}/${id}`;
     return this.http.delete(url);
   }
+  // async exemplo1() {
+  //   const response = await fetch('http://localhost:8000/api/movimentacao', {
+  //     method: 'GET',
+  //   });
+  //   const data = await response.json();
+  //   return data;
+  // }
+  // exemplo2() {
+  //   fetch('http://localhost:8000/api/movimentacao', {
+  //     method: 'GET',
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => console.log(data));
+  // }
 }
