@@ -11,17 +11,6 @@ export class MovimentacaoService {
   get() {
     return this.http.get(this.apiUrl);
   }
-  post(movimentacao: any) {
-    return this.http.post(this.apiUrl, movimentacao);
-  }
-  put(id: number, movimentacao: any) {
-    let url = `${this.apiUrl}/${id}`;
-    return this.http.put(url, movimentacao);
-  }
-  delete(id: number) {
-    let url = `${this.apiUrl}/${id}`;
-    return this.http.delete(url);
-  }
   // async exemplo1() {
   //   const response = await fetch('http://localhost:8000/api/movimentacao', {
   //     method: 'GET',
@@ -36,4 +25,15 @@ export class MovimentacaoService {
   //     .then((response) => response.json())
   //     .then((data) => console.log(data));
   // }
+  post(movimentacao: any) {
+    return this.http.post(this.apiUrl, movimentacao);
+  }
+  put(id: number, movimentacao: any) {
+    let url = `${this.apiUrl}/${id}`;
+    return this.http.put(url, movimentacao);
+  }
+  delete(id: number) {
+    let url = `${this.apiUrl}/${id}`;
+    return this.http.delete(url);
+  }
 }
